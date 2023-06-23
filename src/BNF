@@ -1,0 +1,39 @@
+<program> ::= <statement> | <statement> "!" <program>
+
+<statement> ::= <declaration> | <expression> | <control-flow> | "delete" <delete-operand> 
+
+<declaration> ::= "const" "var" <variable> "=" <expression>
+
+<expression> ::= <binary-expression> | <variable> | <literal> | <function-call>
+
+<control-flow> ::= "if" "(" <expression> ")" <block> | "else" <block>
+
+<block> ::= "{" <program> "}"
+
+<binary-expression> ::= <expression> <binary-operator> <expression>
+
+<binary-operator> ::= "+" | "-" | "*" | "/" | "==" | "!=" | "<" | ">" | "<=" | ">="
+
+<delete-operand> ::= <variable> | <literal> | "class" | "delete"
+
+<function-call> ::= <variable> "(" <parameters> ")"
+
+<parameters> ::= <expression> | <expression> "," <parameters> | ε
+
+<variable> ::= <letter> <variable-tail>
+
+<variable-tail> ::= <letter> <variable-tail> | <digit> <variable-tail> | ε
+
+<letter> ::= "a" | "b" | ... | "z" | "A" | "B" | ... | "Z"
+
+<digit> ::= "0" | "1" | ... | "9"
+
+<literal> ::= <number> | <string>
+
+<number> ::= <digit> <number-tail>
+
+<number-tail> ::= <digit> <number-tail> | ε
+
+<string> ::= '"' <string-contents> '"'
+
+<string-contents> ::= <letter> <string-contents> | <digit> <string-contents> | ε
